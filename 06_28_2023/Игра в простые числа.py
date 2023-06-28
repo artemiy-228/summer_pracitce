@@ -11,12 +11,19 @@ def is_prime(x):
     return True
 
 number = [i for i in input()]
+
+answer = set()
 c = 0
 
 for i in range(1, len(number) + 1):
-    sublists = set(itertools.permutations(number, i))
+    sublists = list(itertools.permutations(number, i))
+    for j in range(len(sublists)):
+        sublists[j] = int("".join(sublists[j]))
+    sublists = set(sublists)
+    for i in sublists:
+        answer.add(i)
 
-    for j in sublists:
-        if is_prime(int("".join(j))):
-            c += 1
+for i in answer:
+    if is_prime(i):
+        c += 1
 print(c)
