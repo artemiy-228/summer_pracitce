@@ -17,9 +17,10 @@ c = 0
 
 for i in range(1, len(number) + 1):
     sublists = list(itertools.permutations(number, i))
+
     for j in range(len(sublists)):
         sublists[j] = int("".join(sublists[j]))
-    sublists = set(sublists)
+
     for i in sublists:
         answer.add(i)
 
