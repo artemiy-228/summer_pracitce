@@ -1,16 +1,14 @@
-from itertools import permutations
+K, M = map(int, input().split())
+intervals = list(map(int, input().split()))
 
-n = int(input())
+sum = 0
+hours = 0
 
-numbers = list(map(str, input().split()))
+for hour in range(1, K + 1):
+    interval = intervals[hour - 1]
+    sum += interval
+    if sum >= M:
+        hours = hour
+        break
 
-max1 = -1
-answer = numbers
-sublists = list(permutations(numbers, n))
-
-for i in sublists:
-    if int("".join(i)) > max1:
-        max1 = int("".join(i))
-        answer = i
-
-print(" ".join(answer))
+print(hours)
