@@ -1,41 +1,37 @@
-s = input()
-b = s.count("B")
-s = s.replace("B", "") + " "
-s = s + " "
-n = "L"
+word = input()
+counter = word.count("B")
+word = word.replace("B", "") + " "
+Left = True
 
-for i in s:
-    if n == "L":
-        if s.startswith("LL"):
-            b += 1
-            n = "R"
-            s = s[2:]
+for i in word:
+    if Left:
+        if word[:2] == "LL":
+            counter += 1
+            Left = False
+            word = word[2:]
 
-        elif s.startswith("LR"):
-            b += 1
-            s = s[1:]
+        elif word[:2] == "LR":
+            counter += 1
+            word = word[1:]
 
-        elif s.startswith("R"):
-            s = s[1:]
+        elif word[0] == "R":
+            word = word[1:]
 
-        elif s.startswith("L ") or s.startswith(" "):
-            b += 1
+        elif word[:2] == "L " or word[0] == " ":
+            counter += 1
             break
 
-    if n == "R":
-        if s.startswith("RR"):
-            b += 1
-            n = "L"
-            s = s[2:]
+    if not Left:
+        if word[:2] == "RR":
+            counter += 1
+            Left = True
+            word = word[2:]
 
-        elif s.startswith("RL") or s.startswith("R"):
-            b += 1
-            s = s[1:]
+        elif word[:2] == "RL" or word[0] == "R":
+            counter += 1
+            word = word[1:]
 
-        elif s.startswith("L"):
-            s = s[1:]
+        elif word[0] == "L":
+            word = word[1:]
 
-        elif s.startswith("R ") or s.startswith(" "):
-            break
-
-print(b)
+print(counter)
