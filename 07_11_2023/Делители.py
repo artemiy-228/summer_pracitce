@@ -1,6 +1,6 @@
 def is_divisible(nums, k):
     n = len(nums)
-    dp = [[False] * (k+1) for _ in range(n+1)]
+    dp = [[False] * (k + 1) for i in range(n + 1)]
     dp[0][abs(nums[0]) % k] = True
 
     for i in range(1, n):
