@@ -31,4 +31,4 @@ else:
         j -= components[index][0]
 
     print(max_rating)
-    print(*chosen_components)
+    print(*chosen_components[::-1])

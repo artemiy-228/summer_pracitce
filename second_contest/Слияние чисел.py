@@ -1,36 +1,14 @@
-x = input()
-y = input()
+a = input()
+b = input()
 
-i = 0
-k = 0
-answer = ""
+answer = ''
 
-if len(x) > len(y):
-    x, y = y, x
-
-while i < len(x):
-    if x[i] > y[k]:
-        answer += x[i]
-        i += 1
-    elif x[i] < y[k]:
-        answer += y[k]
-        k += 1
+while len(a) > 0 or len(b) > 0:
+    if a > b:
+        answer += a[0]
+        a = a[1:]
     else:
-        if x[i] == y[k]:
-            answer += x[i]
-            n = i
-            m = k
-            while n < len(x) and m < len(y) and x[n] == y[m]:
-                n += 1
-                m += 1
-            if n < len(x) and m < len(y):
-                if x[n] > y[m]:
-                    i += 1
-                else:
-                    k += 1
-            else:
-                break
-
-answer += y[k:]
+        answer += b[0]
+        b = b[1:]
 
 print(answer)
