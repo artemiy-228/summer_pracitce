@@ -1,15 +1,36 @@
-number1 = input()
-number2 = input()
+x = input()
+y = input()
 
-result = ''
-while number1 and number2:
-    if number1 >= number2:
-        result = number1[0] + result
-        number1 = number1[1:]
+i = 0
+k = 0
+answer = ""
+
+if len(x) > len(y):
+    x, y = y, x
+
+while i < len(x):
+    if x[i] > y[k]:
+        answer += x[i]
+        i += 1
+    elif x[i] < y[k]:
+        answer += y[k]
+        k += 1
     else:
-        result = number2[0] + result
-        number2 = number2[1:]
+        if x[i] == y[k]:
+            answer += x[i]
+            n = i
+            m = k
+            while n < len(x) and m < len(y) and x[n] == y[m]:
+                n += 1
+                m += 1
+            if n < len(x) and m < len(y):
+                if x[n] > y[m]:
+                    i += 1
+                else:
+                    k += 1
+            else:
+                break
 
-result = number1 + result + number2
+answer += y[k:]
 
-print(result[::-1])
+print(answer)
